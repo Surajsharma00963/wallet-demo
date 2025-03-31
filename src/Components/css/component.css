@@ -1,0 +1,24 @@
+.buttonImp {
+  width: 100%;
+  padding: 10px 30px;
+  background-color: #5673ff;
+  color: aliceblue;
+  font-size: 13pt;
+  border-radius: 50px;
+  border: 0px solid black;
+  margin: 10px 0;
+}
+.buttonImp:disabled {
+  width: 100%;
+  padding: 10px 30px;
+  background-color: #5673ff50;
+  color: aliceblue;
+  font-size: 13pt;
+  border-radius: 50px;
+  border: 0px solid black;
+  margin: 10px 0;
+}
+
+.input::placeholder {
+  color: gray;
+}
