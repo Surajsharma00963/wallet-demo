@@ -76,7 +76,7 @@ const ActionButtonList = ({
     const provider = new ethers.providers.Web3Provider(walletProvider);
     const balance = await provider.getBalance(address);
     const eth = ethers.utils.formatEther(balance);
-    sendBalance(`${eth} ETH`);
+    sendBalance(`${eth}`);
   };
   const handleReadSmartContract = async () => {
     if (contract === null) {
@@ -260,6 +260,7 @@ const ActionButtonList = ({
             <AddContractModal
               visible={addContractModal}
               onPress={(item) => {
+                console.log(item);
                 setContract(item);
               }}
               onClose={() => {

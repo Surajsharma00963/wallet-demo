@@ -15,7 +15,6 @@ function AddContractModal({ visible, onPress, onClose }) {
   const { chainId } = useAppKitNetworkCore();
 
   const { walletProvider } = useAppKitProvider("eip155");
-  console.log(walletProvider, "====");
 
   const getContractAbi = async (contractData) => {
     let url = "";
@@ -54,6 +53,7 @@ function AddContractModal({ visible, onPress, onClose }) {
     try {
       const provider = new ethers.providers.Web3Provider(walletProvider);
       console.log(provider);
+      const signer = provider.getSigner(address);
       const res = await getContractAbi(contract);
       if (res.error) {
         data.error = res.error;
@@ -64,21 +64,24 @@ function AddContractModal({ visible, onPress, onClose }) {
 
       const contractAddress = contract;
 
-      console.log(contractAddress);
-      const contractABI = JSON.parse(res.result);
+      const contractABI = res.result;
       const contractData = new ethers.Contract(
         contractAddress,
         contractABI,
-        provider
+        signer
       );
+
       if ((await contractData.name) != undefined) {
         data.abi = res.result;
         data.name = await contractData.name();
-        data.decimals = await contractData.decimals();
+        data.decimals = (await contractData.decimals()).toNumber
+          ? (await contractData.decimals()).toNumber()
+          : await contractData.decimals();
+
         data.symbol = await contractData.symbol();
         data.address = contractAddress;
         data.error = "";
-        console.log(data);
+        // console.log(data);
 
         setContractDetails(data);
         return data;
@@ -116,10 +119,14 @@ function AddContractModal({ visible, onPress, onClose }) {
               implementationRes.result,
               provider
             );
+
             data.abi = implementationRes.result;
             data.name = await implContract.name();
             data.symbol = await implContract.symbol();
-            data.decimals = await implContract.decimals();
+            data.decimals = (await contractData.decimals()).toNumber
+              ? (await implContract.decimals()).toNumber()
+              : await implContract.decimals();
+
             data.address = contractAddress;
           }
           setContractDetails(data);
@@ -137,7 +144,6 @@ function AddContractModal({ visible, onPress, onClose }) {
       console.log(error);
     }
 
-    console.log(data);
     return data;
   };
   return (
