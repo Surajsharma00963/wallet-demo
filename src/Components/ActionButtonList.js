@@ -52,6 +52,7 @@ const ActionButtonList = ({
       const tx = await signer.sendTransaction(transaction);
       await tx.wait(); // This will wait for the transaction to be mined
       sendHash(tx.hash);
+      console.log(":saxlfkj");
       console.log(tx);
     } catch (error) {
       console.log(error);
