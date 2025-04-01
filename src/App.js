@@ -25,7 +25,7 @@ const customWallets = [
     // link_mode: "universal_link",
   },
 ];
-
+console.log(networks);
 // Create modal and AppKit configuration
 createAppKit({
   adapters: [ethersAdapter],

@@ -48,8 +48,7 @@ const ActionButtonList = ({
       if (!walletProvider || !address) throw Error("user is disconnected");
       const ethersProvider = new ethers.providers.Web3Provider(walletProvider);
       await ethersProvider.ready;
-      const signer = ethersProvider.getSigner();
-      const tx = await signer.sendTransaction(transaction);
+      const tx = await ethersProvider.sendTransaction(transaction);
       await tx.wait(); // This will wait for the transaction to be mined
       sendHash(tx.hash);
       console.log(tx);
