@@ -18,14 +18,29 @@ const customWallets = [
     name: "DIAM Wallet",
     image_url:
       "https://play-lh.googleusercontent.com/HM0G9lgsAtzbpkujqhPA86CR04tgzDUOAviER5yARNBlOsqSpamW8ZtjTJ1Snl1yMGJv=w240-h480-rw",
-    mobile_link: "https://dwconnect.diamante.io",
+    mobile_link: "diamwallet://",
+    universal_link: "https://dwconnect.diamante.io",
     redirect: {
       native: window.location.origin,
+      linkMode: true,
     },
     // link_mode: "universal_link",
   },
+  {
+    name: "React Native Wallet",
+    description: "React Native WalletKit by Reown",
+    url: "https://reown.com/walletkit",
+    icons: ["https://avatars.githubusercontent.com/u/179229932"],
+    mobile_link: "rn-web3wallet-debug://",
+
+    redirect: {
+      // native: "rn-web3wallet-debug://",
+      // universal: "https://appkit-lab.reown.com/rn_walletkit_debug",
+      linkMode: true,
+    },
+  },
 ];
-console.log(networks);
+
 // Create modal and AppKit configuration
 createAppKit({
   adapters: [ethersAdapter],

@@ -2,6 +2,12 @@ import { mainnet, sepolia, bsc, bscTestnet, st } from "@reown/appkit/networks";
 import { AppKitNetwork } from "@reown/appkit/networks";
 import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
 import { createSIWE } from "../utils/SiweUtils";
+import {
+  bnbNetwork,
+  bnbTestnetNetwork,
+  ethereumNetwork,
+  ethereumSepoliaNetwork,
+} from "../utils/ChainUtils";
 
 // Get projectId from https://cloud.reown.com
 export const projectId = "503c8443afe6c595a7f1178254fb004a"; // this is a public projectId only to use on localhost
@@ -20,7 +26,12 @@ export const metadata = {
 };
 
 // for custom networks visit -> https://docs.reown.com/appkit/react/core/custom-networks
-export const networks = [mainnet, bsc, bscTestnet, sepolia];
+export const networks = [
+  ethereumNetwork,
+  bnbTestnetNetwork,
+  bnbNetwork,
+  ethereumSepoliaNetwork,
+];
 export const siweConfig = createSIWE(networks);
 
 // Set up Solana Adapter

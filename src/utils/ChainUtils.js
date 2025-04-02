@@ -1,55 +1,95 @@
-export const mainnet = {
+// networks.js
+
+export const ethereumNetwork = {
   id: 1,
-  chainId: 1,
-  name: "Ethereum",
-  currency: "ETH",
-  explorerUrl: "https://etherscan.io",
-  rpcUrl: "https://cloudflare-eth.com",
-  namespace: "eip155",
+  caipNetworkId: "eip155:1",
+  chainNamespace: "eip155",
+  name: "Ethereum Mainnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "ETH",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://mainnet.infura.io/v3/4be3173057cd45929299e115a59c8c0d"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "Etherscan", url: "https://etherscan.io" },
+  },
+  contracts: {
+    // Add the contracts here if needed
+  },
 };
-
-export const sepolia = {
-  id: 11155111,
-  chainId: 11155111,
-  name: "Sepolia",
-  currency: "ETH",
-  explorerUrl: "https://sepolia.etherscan.io",
-  rpcUrl: "https://sepolia.infura.io/v3/c4ce3e1336ba4711b054713d6027bfcf",
-  namespace: "eip155",
-};
-
-export const binance = {
+export const bnbNetwork = {
   id: 56,
-  chainId: 56,
+  caipNetworkId: "eip155:56",
+  chainNamespace: "eip155",
   name: "Binance Smart Chain",
-  currency: "BNB",
-  explorerUrl: "https://bscscan.com",
-  rpcUrl: "https://bsc-dataseed.bnbchain.org",
-  namespace: "eip155",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Binance Coin",
+    symbol: "BNB",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://bsc-dataseed.binance.org/"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "BSC Explorer", url: "https://bscscan.com" },
+  },
+  contracts: {
+    // Add the contracts here if needed
+  },
 };
 
-export const binanceTestnet = {
+export const ethereumSepoliaNetwork = {
+  id: 11155111,
+  caipNetworkId: "eip155:11155111",
+  chainNamespace: "eip155",
+  name: "Ethereum Sepolia Testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "ETH",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://sepolia.infura.io/v3/d8aece0437db4aed9f37bf9168820b02"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "Sepolia Explorer", url: "https://sepolia.etherscan.io" },
+  },
+  contracts: {
+    // Add the contracts here if needed
+  },
+};
+
+export const bnbTestnetNetwork = {
   id: 97,
-  chainId: 97,
+  caipNetworkId: "eip155:97",
+  chainNamespace: "eip155",
   name: "Binance Smart Chain Testnet",
-  currency: "BNB",
-  explorerUrl: "http://testnet.bscscan.com/",
-  rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-  namespace: "eip155",
-};
-
-export const tronMainnet = {
-  chainId: 728126428, // Example chainId for Tron mainnet
-  name: "Tron Mainnet",
-  currency: "TRX",
-  explorerUrl: "http://tronscan.org/",
-  rpcUrl: "https://api.trongrid.io",
-  namespace: "tron",
-};
-
-export const tronTestnet = {
-  chainId: "tron:2", // Example chainId for Tron testnet
-  chainName: "Tron Testnet",
-  rpcUrl: "https://api.shasta.trongrid.io",
-  nativeCurrency: { name: "Tron", symbol: "TRX", decimals: 6 },
+  nativeCurrency: {
+    decimals: 18,
+    name: "Binance Coin",
+    symbol: "BNB",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "BSC Testnet Explorer",
+      url: "https://testnet.bscscan.com",
+    },
+  },
+  contracts: {
+    // Add the contracts here if needed
+  },
 };
